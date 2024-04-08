@@ -1,5 +1,6 @@
 package io.github.kimmking.apollo1;
 
+import com.ctrip.framework.apollo.core.ApolloClientSystemConsts;
 import com.ctrip.framework.apollo.mockserver.ApolloTestingServer;
 import io.github.kimmking.apollo2.Config1;
 import lombok.SneakyThrows;
@@ -7,25 +8,23 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.cloud.context.properties.ConfigurationPropertiesRebinder;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
-
-import java.util.Arrays;
 
 @SpringBootTest
 class Apollo1ApplicationTests {
 
     static ApolloTestingServer apolloTestingServer = new ApolloTestingServer();
 
+//    @ClassRule  // junit4
+//    public static EmbeddedApollo apollo = new EmbeddedApollo();
+
     @BeforeAll
     @SneakyThrows
     static void init() {
         System.out.println(" ====================================== ");
         System.out.println(" ====================================== ");
-        System.out.println(" =============     ZK2182    ========== ");
+        System.out.println(" =============     Before    ========== ");
         System.out.println(" ====================================== ");
         System.out.println(" ====================================== ");
         apolloTestingServer.start();
@@ -36,8 +35,9 @@ class Apollo1ApplicationTests {
 
     @Test
     void contextLoads() {
-        System.out.println("hahaha.....");
-        apolloTestingServer.close();
+        System.out.println("....  ApolloClientSystemConsts.APOLLO_CONFIG_SERVICE  .....");
+        System.out.println(System.getProperty(ApolloClientSystemConsts.APOLLO_CONFIG_SERVICE));
+        System.out.println("....  ApolloClientSystemConsts.APOLLO_CONFIG_SERVICE  .....");
     }
 
     @Test

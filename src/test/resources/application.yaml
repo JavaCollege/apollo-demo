@@ -30,4 +30,4 @@ logging:
     root: info
     org.springframework: info
     io.github.kimmking: debug
-    com.ctrip: info
+    com.ctrip: debug
